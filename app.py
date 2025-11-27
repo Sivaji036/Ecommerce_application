@@ -105,7 +105,7 @@ def verify_otp():
 @app.route('/admin-login',methods=['GET','POST'])
 def admin_login():
     if request.method=='GET':
-           img='signin.jpg'
+           img='logini12.png'
            return render_template('admin/admin_login.html',img=img)
       
     email=request.form['email'].strip()
@@ -1094,6 +1094,7 @@ def download_invoice(order_id):
     response.headers['Content-Disposition'] = f"attachment; filename=invoice_{order_id}.pdf"
 
     return response
+
 
 if __name__=='__main__':
     app.run(debug=True)
