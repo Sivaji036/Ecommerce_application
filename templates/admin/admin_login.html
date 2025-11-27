@@ -1,0 +1,60 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="row shadow-lg w-100"
+         style="max-width: 900px; border-radius: 12px; overflow: hidden;">
+
+        <!-- LEFT IMAGE SECTION -->
+        <div class="col-12 col-md-6 login-image-container p-0">
+            <img src="{{ url_for('static', filename='images/' + img) }}"
+                 class="login-image"
+                 alt="Login Image">
+        </div>
+
+        <!-- RIGHT LOGIN FORM -->
+        <div class="col-12 col-md-6 p-5 bg-white d-flex flex-column justify-content-center">
+
+            <h3 class="mb-4 text-center" style="font-weight: 700; color:#1a1a1a;">
+                Welcome Back
+            </h3>
+
+            <form method="POST" action="/admin-login">
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control p-3"
+                           name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control p-3"
+                           name="pwd" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit"
+                        class="btn w-100 p-3 mt-3"
+                        style="background: linear-gradient(90deg,#007bff,#00b4ff); border-radius: 8px; color:white; font-size: 16px;">
+                    LOGIN
+                </button>
+
+                <p class="text-center mt-3">
+                    <a href="{{ url_for('forgot') }}">Forgot Password?</a>
+                </p>
+
+                <p class="text-center mt-4">
+                    <span class="text-muted">Don't have an account?</span>
+                    <a href="{{ url_for('admin_signup') }}" style="font-weight:600;">Register</a>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

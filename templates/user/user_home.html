@@ -1,0 +1,55 @@
+{% extends 'user/base.html' %}
+
+{% block title %}User_Home{% endblock %}
+
+{% block content %}
+<div style="padding-left: 100px; padding-right: 100px;">
+
+    <h2>Welcome, {{ user_name }}!</h2>
+    <hr>
+
+    <!-- Filter + Products Container -->
+    <div class="d-flex flex-column align-items-start">
+
+        <!-- Category Filter -->
+        <!-- <form method="GET" action="/user/products" class="d-flex align-items-center mb-4" style="width: auto; max-width: 300px;">
+            <select name="category" class="form-select me-2" style="width:150px;">
+                <option value="">All Categories</option>
+                {% for cat in categories %}
+                <option value="{{ cat.category }}" {% if request.args.get('category') == cat.category %} selected {% endif %}>
+                    {{ cat.category }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn btn-primary">
+                Filter
+            </button>
+        </form> -->
+
+        <!-- Product Cards -->
+        <div class="product-container d-flex flex-wrap gap-3">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="/static/uploads/product_images/{{ product.image }}">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.category }}</p>
+                <p><strong>₹{{ product.price }}</strong></p>
+
+                <!-- products.html -->
+<!-- <a href="/user/product/{{ product.product_id }}">View Item</a> -->
+
+
+                <form action="/user/add-to-cart/{{ product.product_id }}" method="GET">
+                    <button type="submit" style="background-color: blue; color: white; padding: 8px 15px; border: none; border-radius: 4px;">
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

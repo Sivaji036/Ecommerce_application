@@ -1,0 +1,412 @@
+.navbar-custom {
+ background: linear-gradient(90deg, #87CEFA,#87CEFA);
+/* LightSkyBlue → LightCyan */
+
+}
+
+
+/*
+body {
+    background-color: AliceBlue;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+*/
+
+footer {
+  background-color: White;
+}
+
+th {
+    border: 2px solid Black;
+    padding: 15px;
+    background-color: White;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    border: 2px solid Black;
+    padding: 15px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: DodgerBlue;
+    color: White;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ===============================
+   GLOBAL RESET & LAYOUT
+================================= */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+
+/* ===============================
+   STICKY NAVBAR
+================================= */
+.navbar-custom {
+    background-color: white !important;
+    position: sticky;     /* 🔥 Makes the navbar sticky */
+    top: 0;
+    z-index: 1000;        /* Keep it above all content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* small shadow */
+}
+
+.navbar-custom .nav-link {
+    color: black !important;
+}
+
+.logo img {
+    height: 45px;
+}
+
+
+/* ===============================
+   FOOTER
+================================= */
+footer { 
+    background: linear-gradient(90deg, #87CEFA, #87CEFA);
+    color: white;
+    padding: 40px 20px;
+    margin-top: auto; /* Keeps footer at bottom */
+}
+
+footer p {
+    color: white;
+}
+
+/* Footer content container */
+.foot {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    text-align: left;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+footer ul li {
+    margin: 6px 0;
+}
+
+footer ul li a {
+    color: #e8e8e8;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+footer ul li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+
+/* ===============================
+   RESPONSIVE FOOTER
+================================= */
+@media (max-width: 768px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+}
+
+.contact-wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Headings */
+.contact-wrapper h2 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Contact links */
+.contact-wrapper p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contact-wrapper a {
+    color: blue;
+    text-decoration: none;
+}
+
+.contact-wrapper a:hover {
+    text-decoration: underline;
+}
+
+/* Card (form container) */
+.card {
+    background: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Card padding */
+.card-body {
+    padding: 25px;
+}
+
+/* Horizontal form layout */
+.feedback-form {
+    display: flex;
+    flex-wrap: wrap; /* wrap on smaller screens */
+    gap: 15px;
+}
+
+/* Form groups */
+.feedback-form .form-group {
+    flex: 1; /* make them share space evenly */
+    min-width: 200px; /* avoid too small on narrow screens */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs and textarea */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background: white;
+}
+
+/* Adjust textarea height */
+textarea {
+    height: 100px;
+}
+
+/* Submit button */
+.btn361 {
+    background: blue;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    flex: 1 1 100%; /* full width below inputs */
+}
+
+.btn361:hover {
+    background: darkblue;
+}
+
+.logo img {
+  width: 75px;    /* set your preferred width */
+  height: 50px;   /* set your preferred height */
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.product-image {
+    height: 200px;          /* fixed height for all images */
+    width: 100%;            /* fill card width */
+    object-fit: cover;      /* crop/scale image without distortion */
+}
+.card {
+    height: 100%;           /* make all cards same height */
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* keep content evenly spaced */
+}
+/* Filter form container */
+.filter-form {
+    position: relative;
+    width: 200px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Dropdown styling */
+.filter-select {
+    width: 100%;
+    padding: 12px 50px 12px 15px; /* extra right padding for button */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    appearance: none; /* removes default dropdown arrow */
+    cursor: pointer;
+}
+
+/* Focus effect */
+.filter-select:focus {
+    outline: none;
+    /* border-color: #007bff; */
+    box-shadow: 0 0 3px rgba(0,123,255,0.5);
+}
+
+/* Submit button styling */
+.filter-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Hover effect for button */
+/* .filter-button:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+} */
+/* PAGE WRAPPER */
+.page-wrapper {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* FILTER FORM */
+.filter-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.filter-button {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background: #084dbf;
+}
+
+/* TABLE */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+.product-table th {
+    background: #f1f1f1;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.product-table td {
+    padding: 12px;
+    border-top: 1px solid #eee;
+}
+
+.product-table tr:hover {
+    background: #fafafa;
+}
+
+.product-table img {
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* ACTION LINKS */
+.action-view {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.action-update {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.action-delete {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.action-view:hover,
+.action-update:hover,
+.action-delete:hover {
+    opacity: 0.7;
+}
+
+.login-image {
+    width: 140%;
+    height: 100%;
+    object-fit: cover;   /* or 'contain' depending on what you want */
+    display: block;
+}
+
+.foot a {
+    color: black;         /* Set link text color to black */
+    text-decoration: none; /* Optional: removes underline */
+}
+
+.foot a:hover {
+    color: #333333; /* Optional: slightly darker on hover */
+}
+form select.form-select:focus,
+form button:focus {
+    outline: none !important;      /* removes blue outline */
+    box-shadow: none !important;   /* removes blue glow/shadow */
+    border-color: #ccc !important; /* optional: keep border neutral */
+}
+

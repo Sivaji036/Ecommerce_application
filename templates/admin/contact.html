@@ -1,0 +1,76 @@
+{% extends 'admin/base.html' %}
+
+{% block title %} Contact Page {% endblock %}
+
+{% block content %}
+
+<!-- Connect CSS -->
+<link rel="stylesheet" href="/static/css/contact.css">
+
+<div class="contact-wrapper">
+
+    <!-- Contact Section -->
+    <div>
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you! Reach out with any feedback or support queries.</p>
+    </div>
+
+    <div>
+        <p>
+            <strong>Phone:</strong> 7330911406 <br>
+
+            <strong>Email:</strong>
+            <a href="mailto:sivajibandlamudi123@gmail.com">
+                sivajibandlamudi123@gmail.com
+            </a><br>
+
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/shivaji-bandlamudi" target="_blank">
+                linkedin.com/in/shivaji-bandlamudi
+            </a><br>
+
+            <strong>GitHub:</strong>
+            <a href="https://github.com/Sivaji036" target="_blank">
+                github.com/Sivaji036
+            </a><br>
+        </p>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="row justify-content-left">
+        <div class="col-md-6 col-lg-5">
+            <div class="card">
+                <div class="card-body">
+
+                    <h2>Feedback Form</h2>
+
+                    <form method="POST" action="/feedback" class="feedback-form">
+
+    <div class="form-group">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Enter Your Email:</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group" style="flex-basis:100%;">
+        <label for="message">Enter Message:</label>
+        <textarea name="message" placeholder="Write your message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn361">Send Message</button>
+
+</form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Payment Page{% endblock %}
+
+{% block content %}
+
+<div style="max-width: 600px;margin: 50px auto;padding: 25px;background: #f9f9f9;border-radius: 12px;box-shadow: 0px 5px 18px rgba(0,0,0,0.08);">
+
+    <h2 style="text-align:center;color:#1f6feb;margin-bottom: 25px;font-weight: 700;">
+        Complete Your Payment
+    </h2>
+
+    {% if product %}
+    <div style="border: 1px solid #ddd;padding: 18px;margin-bottom: 20px;border-radius: 10px;background: white;box-shadow: 0px 3px 12px rgba(0,0,0,0.05);">
+        <h3 style="margin: 0; color: #333;">{{ product.product_name }}</h3>
+        <p style="margin:10px 0 0; font-size: 18px; color: #444;">
+            <strong>Price:</strong> ₹{{ product.price }}
+        </p>
+    </div>
+    {% endif %}
+
+    <div style=" background: #e8f0ff; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; font-size: 18px; font-weight: 600; color: #1f6feb;">
+        Total Amount: ₹{{ amount }}
+    </div>
+
+    <!-- Customer Address Form -->
+    <form id="address-form" style="margin-bottom: 20px;">
+        <h3 style="margin-bottom: 15px; color:#333;">Shipping Address</h3>
+        <input type="text" name="full_name" placeholder="Full Name" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="street_address" placeholder="Street Address" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="city" placeholder="City" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="state" placeholder="State" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="postal_code" placeholder="Postal Code" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="country" placeholder="Country" required style="width: 100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" name="phone_number" placeholder="Phone Number" required style="width: 100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc;">
+    </form>
+
+    <div style="text-align: center;">
+        <button id="rzp-button" 
+                style="padding: 12px 25px;background: #1f6feb;color: white;border: none;font-size: 18px;border-radius: 8px;cursor: pointer;transition: background 0.3s;"
+                onmouseover="this.style.background='#195ecb'"
+                onmouseout="this.style.background='#1f6feb'">
+            Pay Now
+        </button>
+    </div>
+
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ key_id }}",
+    "amount": "{{ amount * 100 }}",
+    "currency": "INR",
+    "name": "SmartCart",
+    "description": "Order Payment",
+    "order_id": "{{ order_id }}",
+
+    "handler": function(response) {
+
+        // Collect address data
+        var addressForm = document.getElementById('address-form');
+        var formData = new FormData(addressForm);
+
+        // Create form to POST verification and address to backend
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "/verify-payment";  // your backend endpoint
+
+        // Add Razorpay payment fields
+        var fields = {
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature
+        };
+
+        for (var key in fields) {
+            var hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = key;
+            hidden.value = fields[key];
+            form.appendChild(hidden);
+        }
+
+        // Add address fields
+        formData.forEach(function(value, key) {
+            var hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = key;
+            hidden.value = value;
+            form.appendChild(hidden);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+    },
+
+    "modal": {
+        "ondismiss": function() {
+            window.location.href = "/payment-failure?error=Payment+Cancelled";
+        }
+    }
+};
+
+var rzp = new Razorpay(options);
+
+rzp.on('payment.failed', function (response){
+    window.location.href = "/payment-failure?error=" 
+                           + encodeURIComponent(response.error.description);
+});
+
+document.getElementById('rzp-button').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    
+    <div class="card shadow-lg p-5" style="width: 100%; max-width: 450px; border-radius: 0;">
+
+        <h2 class="text-center mb-4" style="font-weight: 700; color: black;">
+            Update Profile
+        </h2>
+
+        {% if admin.profile_image %}
+            <div class="text-center mb-4">
+                <img src="/static/uploads/admin_profiles/{{ admin.profile_image }}" 
+                     alt="Profile Image" 
+                     style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid gray;">
+            </div>
+        {% else %}
+            <p class="text-center text-muted mb-4">No profile image</p>
+        {% endif %}
+
+        <form action="/admin/profile" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label" style="font-weight: bold; color: darkslategray;">Name</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    value="{{ admin.name }}" 
+                    class="form-control p-3" 
+                    style="border-radius: 10px; border: 1px solid gray; font-size: 14px;" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label" style="font-weight: bold; color: darkslategray;">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value="{{ admin.email }}" 
+                    class="form-control p-3" 
+                    style="border-radius: 10px; border: 1px solid gray; font-size: 14px;" 
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label" style="font-weight: bold; color: darkslategray;">New Password (optional)</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-control p-3" 
+                    style="border-radius: 10px; border: 1px solid gray; font-size: 14px;"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="profile_image" class="form-label" style="font-weight: bold; color: darkslategray;">Upload New Profile Image (optional)</label>
+                <input 
+                    type="file" 
+                    id="profile_image" 
+                    name="profile_image" 
+                    accept="image/*" 
+                    class="form-control p-2" 
+                    style="border-radius: 10px; border: 1px solid gray; font-size: 14px;"
+                >
+            </div>
+
+            <button 
+                type="submit" 
+                class="btn w-100 p-3 mt-2" 
+                style="border-radius: 8px; font-size: 16px; background-color: blue; color: white; border: none; cursor: pointer;"
+            >
+                Update Profile
+            </button>
+        </form>
+
+        <a href="/admin-dashboard" class="d-block text-center mt-3" style="color: green; text-decoration: none;">
+            Back to Dashboard
+        </a>
+
+    </div>
+</div>
+{% endblock %}

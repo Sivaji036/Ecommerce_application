@@ -1,0 +1,45 @@
+{% extends 'user/base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+
+<div class="orders-container">
+
+    <h2 class="orders-heading"> My Orders</h2>
+
+    {% if orders|length == 0 %}
+        <p>You have not placed any orders yet.</p>
+        <a href="/user/products" class="start-shopping">Start Shopping</a>
+
+    {% else %}
+
+        {% for order in orders %}
+        <div class="order-card">
+
+            <h3 class="order-title">Order #{{ order.order_id }}</h3>
+
+            <div class="order-info">
+                <p><strong>Amount:</strong> ₹{{ order.amount }}</p>
+                <p><strong>Status:</strong> {{ order.payment_status }}</p>
+                <p><strong>Date:</strong> {{ order.created_at }}</p>
+            </div>
+
+            <div class="order-actions">
+                <a href="/user/order-success/{{ order.order_id }}" class="view-btn">
+                    View Order Details
+                </a>
+
+                <a href="/user/download-invoice/{{ order.order_id }}" class="view-btn">
+                    Download Invoice
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

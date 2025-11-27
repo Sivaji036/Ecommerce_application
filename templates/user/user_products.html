@@ -1,0 +1,62 @@
+{% extends 'user/base.html' %}
+
+{% block title %}User Products{% endblock %}
+
+{% block content %}
+
+<!-- Category Filter -->
+<form method="GET" action="/user/products" class="d-flex align-items-center" style="width:auto;">
+    <select name="category" class="form-select" style="width:150px;">
+        <option value="">All Categories</option>
+        {% for cat in categories %}
+        <option value="{{ cat.category }}" {% if request.args.get('category') == cat.category %} selected {% endif %}>
+            {{ cat.category }}
+        </option>
+        {% endfor %}
+    </select>
+
+<button type="submit" class="btn btn-primary ms-2" 
+        style="border-radius: 5px; padding: 5px 15px; transition: 0.3s;">
+    Filter
+</button>
+
+</form>
+<hr>
+<div class="product-container" style="margin-left: 100px;">
+{% for product in products %}
+<div class="product-card">
+    <img src="/static/uploads/product_images/{{ product.image }}">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.category }}</p>
+    <p><strong>₹{{ product.price }}</strong></p>
+<div style="display: flex; gap: 10px; margin-top: 10px;">
+
+    <a href="/user/pay/{{ product.product_id }}" 
+       class="btn btn-success"
+       style="flex: 1; border-radius: 8px; text-align: center; padding: 8px 0; display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
+       Buy Now
+    </a>
+
+    <form action="/user/add-to-cart/{{ product.product_id }}" method="GET" 
+          style="flex: 1; margin: 0; padding: 0; box-sizing: border-box;">
+        <button type="submit"
+                style="width: 100%; padding: 8px 0; border-radius: 8px; background-color: #007bff; color: white; border: none; display: flex; justify-content: center; align-items: center; box-sizing: border-box; margin-top: 7px;">
+            Add to Cart
+        </button>
+    </form>
+
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+<div style="margin-top: 20px; margin-left: 30px;">
+    <a href="/user-dashboard" 
+       style="font-size: 18px; text-decoration:none; color:white; background:blue; padding:10px 20px; border-radius:5px;">
+        Back to Dashboard
+    </a>
+</div>
+<br>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{%extends 'admin/base.html'%}
+
+{%block title %}Verify{%endblock%}
+
+{%block content%}
+
+ <div class="container d-flex justify-content-center align-items-center" 
+     style="min-height: 100vh;">
+
+    <div class="card shadow-lg p-4" 
+         style="width: 100%; max-width: 400px; border-radius: 10px;">
+
+        <h2 class="text-center mb-4" style="font-weight: 700;">Verify OTP</h2>
+
+        <form action="/verify-otp" method="POST">
+
+            
+            <div class="mb-3">
+                <label class="form-label" style="font-weight: bold;">Enter OTP</label>
+                <input type="text" name="otp" class="form-control p-2" 
+                       placeholder="Enter the OTP sent to your email" required>
+            </div>
+
+            
+            <div class="mb-3">
+                <label class="form-label" style="font-weight: bold;">Create Password</label>
+                <input type="password" name="pwd" class="form-control p-2"
+                       placeholder="Create your account password" required>
+            </div>
+
+            
+            <button type="submit" 
+                class="btn btn-primary w-100 p-2 mt-2"
+                style="border-radius: 6px; font-size: 16px; background-color: #4caf50; border: none;">
+                Verify & Register
+            </button>
+        </form>
+
+    
+        <a href="/admin/signup"
+           class="text-center d-block mt-3"
+           style="font-size: 14px; color: black; text-decoration: none;">
+           ← Back to Signup
+        </a>
+
+    </div>
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,50 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Payment Failed{% endblock %}
+
+{% block content %}
+
+<div style="max-width: 500px;margin: 60px auto;padding: 30px;background: #ffe8e8;border-radius: 14px;text-align: center;box-shadow: 0px 5px 18px rgba(0,0,0,0.1);">
+
+    <!-- Failure Icon -->
+    <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png"
+         width="90" style="margin-bottom: 15px;">
+
+    <h2 style="color: #d9534f;font-size: 26px;margin-bottom: 10px;font-weight: 700;">
+        Payment Failed
+    </h2>
+
+    <p style="font-size: 17px;color: #333;margin-bottom: 20px;">
+        Oops! Your payment did not go through.  
+        Please try again or contact support if the issue persists.
+    </p>
+<!-- 
+    <div style="background: white;padding: 15px;border-radius: 10px;margin-bottom: 20px;box-shadow: 0px 2px 8px rgba(0,0,0,0.05);">
+
+        {% if payment_id %}
+        <p style="margin: 6px 0; font-size: 16px;">
+            <strong>Payment ID:</strong> {{ payment_id }}
+        </p>
+        {% endif %}
+
+        {% if order_id %}
+        <p style="margin: 6px 0; font-size: 16px;">
+            <strong>Order ID:</strong> {{ order_id }}
+        </p>
+        {% endif %}
+
+        {% if error %}
+        <p style="margin: 6px 0; font-size: 16px; color:#d9534f;">
+            <strong>Error:</strong> {{ error }}
+        </p>
+        {% endif %}
+    </div> -->
+
+    <a href="/user/products" 
+       style=" display:inline-block; padding: 12px 20px; background: #d9534f; color: white; font-size: 16px;border-radius: 8px;text-decoration: none;font-weight: 600;transition: 0.3s;">
+        Continue Shopping
+    </a>
+
+</div>
+
+{% endblock %}

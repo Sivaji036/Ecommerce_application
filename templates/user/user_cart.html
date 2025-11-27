@@ -1,0 +1,71 @@
+{% extends 'user/base.html' %}
+{% block title %}View_Cart{% endblock %}
+
+{% block content %}
+<h2 class="cart-title">Your Cart</h2>
+
+{% if not cart %}
+    <p>Your cart is empty.</p>
+    <a href="/user-dashboard" class="btn-shop">Shop Now</a>
+
+{% else %}
+<div class="cart-container">
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for pid, item in cart.items() %}
+            <tr>
+                <td>
+                    <img src="/static/uploads/product_images/{{ item.image }}" class="cart-img">
+                </td>
+
+                <td>{{ item.name }}</td>
+
+                <td>₹{{ item.price }}</td>
+
+                <td class="qty-cell">
+    <div class="qty-wrapper">
+        <a href="/user/cart/decrease/{{ pid }}" class="qty-btn">−</a>
+        <span class="qty-number">{{ item.quantity }}</span>
+        <a href="/user/cart/increase/{{ pid }}" class="qty-btn">+</a>
+    </div>
+</td>
+                <td>₹{{ item.price * item.quantity }}</td>
+
+                <td>
+                    <a href="/user/cart/remove/{{ pid }}" class="remove-btn">Remove</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<br>
+   <div class="total-box" style="margin-left:20px;">
+    <h3>Grand Total: ₹{{ grand_total }}</h3>
+</div><br>
+
+<div style="margin-left:20px;">
+    <form action="/user/pay" method="POST">
+        <button type="submit" 
+                style="padding:12px 30px; background-color:green; color:white; 
+                       border:none; cursor:pointer; font-size:18px; 
+                       border-radius:10px;">
+            Pay Now
+        </button>
+    </form><br> 
+</div><br>
+
+<a href="/user-dashboard" class="continue-btn" style="margin-left:20px;">Continue Shopping</a><br><br>
+
+{% endif %}
+{% endblock %}

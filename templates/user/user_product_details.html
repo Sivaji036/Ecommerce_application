@@ -1,0 +1,28 @@
+{% extends '/user/base.html' %}
+
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4 mb-5">   <!-- mb-5 adds gap before footer -->
+    <div class="card shadow" style="max-width: 280px;">  <!-- removed margin:auto so it's left aligned -->
+
+        <img src="/static/uploads/product_images/{{ product.image }}" 
+             class="card-img-top"
+             alt="{{ product.name }}">
+
+        <div class="card-body">
+            <h3 class="card-title">{{ product.name }}</h3>
+            <hr>
+
+            <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+            <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
+            <p class="card-text"><strong>Price:</strong> ₹{{ product.price }}</p>
+            
+            <a href="/user/products" class="btn btn-primary mt-3">Back to Products</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

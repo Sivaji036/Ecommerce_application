@@ -1,0 +1,53 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Order Successful{% endblock %}
+
+{% block content %}
+
+<div class="success-container">
+
+    <h2 class="success-title"> Your Order is Confirmed!</h2>
+    <p class="success-sub">Thank you for shopping with <strong>SmartCart</strong>.</p>
+
+    <div class="order-details">
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>Payment ID:</strong> {{ order.razorpay_payment_id }}</p>
+        <p><strong>Amount Paid:</strong> ₹{{ order.amount }}</p>
+        <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+    </div>
+
+    <div class="items-list">
+        <h3>Order Summary</h3>
+
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price (₹)</th>
+            </tr>
+
+            {% for it in items %}
+            <tr>
+                <td>{{ it.product_name }}</td>
+                <td>{{ it.quantity }}</td>
+                <td>{{ it.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+    <div class="success-actions">
+    <a href="/user/download-invoice/{{ order.order_id }}" class="btn btn-outline">Download Invoice (PDF)</a>
+</div>
+
+<br>
+
+    <div class="success-actions">
+    <a href="/user/products" class="btn btn-blue">Continue Shopping</a>
+    <a href="/user/my-orders" class="btn btn-blue">View My Orders</a>
+</div>
+
+</div>
+
+{% endblock %}

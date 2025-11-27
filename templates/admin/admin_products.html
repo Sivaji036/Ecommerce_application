@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-wrap justify-content-start" style="gap: 100px;">
+    {% for p in products %}
+    <div><!-- no margin needed because gap handles spacing -->
+        <div class="card shadow" style="width: 220px; height: 350px; display: flex; flex-direction: column;">
+            <div style="height: 200px; padding: 10px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <img src="/static/uploads/product_images/{{ p.image }}" 
+                     style="max-height: 100%; max-width: 100%;" 
+                     alt="{{ p.name }}">
+            </div>
+            <div class="card-body text-center d-flex flex-column justify-content-center p-2">
+                <h5 class="card-title fs-6 mb-1">{{ p.name }}</h5>
+                <p class="card-text small mb-1">{{ p.description }}</p>
+                <p class="text-primary fw-bold mb-0">{{ p.price }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if products|length == 0 %}
+<p class="text-center">No products found.</p>
+{% endif %}
+
+{% endblock %}

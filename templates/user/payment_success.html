@@ -1,0 +1,39 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Payment SUCCESS{% endblock %}
+
+{% block content %}
+
+<div style="max-width: 500px;margin: 60px auto;padding: 30px;background: #e8fff1;border-radius: 14px;text-align: center;box-shadow: 0px 5px 18px rgba(0,0,0,0.1);">
+
+    <!-- Success Icon -->
+    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png"
+         width="90" style="margin-bottom: 15px;">
+
+    <h2 style="color: #1fa467;font-size: 26px;margin-bottom: 10px;font-weight: 700;">
+        Payment Successful!
+    </h2>
+
+    <p style="font-size: 17px;color: #333;margin-bottom: 20px;">
+        Thank you! Your payment has been processed successfully.
+    </p>
+
+    <div style="background: white;padding: 15px;border-radius: 10px;margin-bottom: 20px;box-shadow: 0px 2px 8px rgba(0,0,0,0.05);">
+        
+        <p style="margin: 6px 0; font-size: 16px;">
+            <strong>Payment ID:</strong> {{ payment_id }}
+        </p>
+
+        <p style="margin: 6px 0; font-size: 16px;">
+            <strong>Order ID:</strong> {{ order_id }}
+        </p>
+    </div>
+
+    <a href="/user/products" 
+       style="display:inline-block;padding: 12px 20px;background: #1fa467;color: white;font-size: 16px;border-radius: 8px;text-decoration: none;font-weight: 600;transition: 0.3s;">
+        Continue Shopping
+    </a>
+
+</div>
+
+{% endblock %}
