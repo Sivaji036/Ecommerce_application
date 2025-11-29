@@ -1,0 +1,184 @@
+/* ---- SELECT LOGIN PAGE ---- */
+
+.login-select-wrapper {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 20px;
+}
+
+.login-title {
+    font-weight: 700;
+    color: #222;
+}
+
+.login-subtext {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.login-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 14px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    color: white !important;
+}
+
+.admin-btn {
+    background: linear-gradient(90deg, #007bff, #00b4ff);
+}
+
+.user-btn {
+    background: linear-gradient(90deg, #28a745, #45d96a);
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+footer { 
+    background: linear-gradient(90deg, #87CEFA, #87CEFA);
+    color: white;
+    padding: 40px 20px;
+    margin-top: auto; /* Keeps footer at bottom */
+}
+
+.navbar-custom {
+ background: linear-gradient(90deg, #87CEFA,#87CEFA);
+/* LightSkyBlue → LightCyan */
+
+}
+.navbar-custom {
+    background-color: white !important;
+    position: sticky;     /* 🔥 Makes the navbar sticky */
+    top: 0;
+    z-index: 1000;        /* Keep it above all content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* small shadow */
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* =============================
+   SELECT LOGIN PAGE STYLES
+   ============================= */
+
+.login-select-wrapper {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7fbff;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 5px solid #87CEFA;
+    transition: transform 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-4px);
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.login-subtext {
+    font-size: 15px;
+    color: #5a5a5a;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.login-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: 0.25s ease;
+    color: white !important;
+}
+
+/* Your theme color */
+.admin-btn,
+.user-btn {
+    background: linear-gradient(90deg, #87CEFA, #87CEFA);
+    border: 1px solid #6ec0f5;
+}
+
+.login-btn:hover {
+    background: #6ec0f5;
+    color: white !important;
+    transform: scale(1.03);
+}
+
+
+/* =============================
+   RESPONSIVE DESIGN
+   ============================= */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .login-title {
+        font-size: 22px;
+    }
+
+    .login-btn {
+        font-size: 16px;
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-card {
+        padding: 20px 15px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+
+    .login-subtext {
+        font-size: 14px;
+    }
+}

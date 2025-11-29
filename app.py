@@ -41,11 +41,18 @@ def get_db_connection():
     return conn
 
 @app.route('/')
-def Home():
+def Home(): 
     if 'admin_id' in session:
         return redirect('/admin-dashboard')
-    return redirect('/admin-login')
 
+    if 'user_id' in session:
+        return redirect('/user-dashboard')
+
+    return render_template('/select-login')
+
+@app.route('/select-login')
+def select_login():
+    return render_template('select_login.html')
 @app.route('/admin-signup',methods=['GET','POST'])
 def admin_signup():
     if request.method=='GET':
@@ -161,7 +168,7 @@ def admin_logout():
      session.pop('admin_name',None)
      session.pop('admin_email', None)
      flash("Logged out successfully.", "success")
-     return redirect('/admin-login')
+     return redirect('/select-login')
 
 UPLOAD_FOLDER='static/uploads/product_images'
 app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
@@ -212,6 +219,7 @@ def add_item():
 
     flash("Product added successfully!", "success")
     return redirect('/admin/add-item')
+
 @app.route('/admin/item-list')
 def item_list():
      
@@ -660,7 +668,7 @@ def user_logout():
     session.pop(session['user_name'],None)
     session.pop(session['user_email'],None)
     flash('logout sucessfully','success')
-    return redirect('/user-login')
+    return redirect('/select-login')
 @app.route('/user/products')
 def user_products():
     if 'user_id' not in session:

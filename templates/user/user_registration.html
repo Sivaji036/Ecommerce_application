@@ -1,44 +1,71 @@
 {% extends 'user/base.html'%}
 
-{%block title %} User_Registration {%endblock%}
+{% block title %} User_Registration {% endblock %}
 
-{%block content %}
+{% block content %}
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="container d-flex justify-content-center align-items-center" 
+     style="min-height: 100vh; background:#ffffff;">
 
-    <div class="card shadow-lg p-5" style="width: 100%; max-width: 450px; border-radius: 12px;">
-        
-        <h2 class="text-center mb-4" style="font-weight: 700; color: black;">
-            User Registration
+    <div class="p-5 shadow-lg"
+         style="width:100%; max-width:450px; border-radius:18px; background:white; border:1px solid #eee;">
+
+        <h2 class="text-center mb-4"
+            style="font-weight:700; font-size:28px; color:#333; letter-spacing:1px;">
+            SIGN UP
         </h2>
 
         <form action="/user-register" method="POST">
 
+            <!-- Name -->
             <div class="mb-3">
-                <label class="form-label" style="font-weight: bold; color: #333;">Enter Name</label>
-                <input type="text" name="name" class="form-control p-3"
-                       placeholder="Enter your name"
-                       style="border-radius: 10px; border: 1px solid #ccc; font-size: 14px;" required>
+                <input type="text" name="name" 
+                       placeholder="Username"
+                       class="form-control p-3"
+                       style="
+                           border-radius:10px; 
+                           border:1px solid #dcdcdc; 
+                           font-size:14px; 
+                           background:white;
+                       " 
+                       required>
             </div>
 
+            <!-- Email -->
             <div class="mb-3">
-                <label class="form-label" style="font-weight: bold; color: #333;">Email</label>
-                <input type="email" name="email" class="form-control p-3"
-                       placeholder="Enter your email"
-                       style="border-radius: 10px; border: 1px solid #ccc; font-size: 14px;" required>
+                <input type="email" name="email"
+                       placeholder="E-mail"
+                       class="form-control p-3"
+                       style="
+                           border-radius:10px; 
+                           border:1px solid #dcdcdc; 
+                           font-size:14px; 
+                           background:white;
+                       " 
+                       required>
             </div>
 
+            <!-- Button -->
             <button type="submit"
-                    class="btn btn-primary w-100 p-3"
-                    style="border-radius: 8px; font-size: 16px; background-color: #0d6efd; border: none;">
-                Send otp
+                    class="btn w-100 p-3"
+                    style="
+                        border-radius:25px; 
+                        background:#4e8ef7; 
+                        color:white; 
+                        font-size:16px; 
+                        border:none; 
+                        font-weight:600;
+                    ">
+                SEND OTP
             </button>
 
         </form>
 
-        <p class="text-center mt-3">
-            <a href="/user-login" style="text-decoration: none; color: #4caf50; font-weight: 600;">
-                Already have an account? Login
+        <!-- Already Have Account -->
+        <p class="text-center mt-4" style="font-size:14px; color:#444;">
+            Already have an account?
+            <a href="/user-login" style="color:#4e8ef7; font-weight:600; text-decoration:none;">
+                Login here
             </a>
         </p>
 
@@ -47,7 +74,3 @@
 </div>
 
 {% endblock %}
-
-
-
-

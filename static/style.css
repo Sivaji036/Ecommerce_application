@@ -410,3 +410,97 @@ form button:focus {
     border-color: #ccc !important; /* optional: keep border neutral */
 }
 
+/* ====== MOBILE FIX FOR PRODUCT TABLE ====== */
+@media (max-width: 768px) {
+
+    .page-wrapper {
+        padding: 10px !important;
+    }
+
+    .page-wrapper h2 {
+        font-size: 20px !important;
+        text-align: center;
+    }
+
+    .product-table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-collapse: collapse;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 8px !important;
+        font-size: 13px !important;
+        text-align: left;
+    }
+
+    .product-table img {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 5px;
+    }
+
+    .action-view,
+    .action-update,
+    .action-delete {
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        display: inline-block;
+    }
+
+    form.d-flex {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+    }
+
+    form.d-flex select,
+    form.d-flex button {
+        width: 100% !important;
+        margin-top: 8px;
+    }
+}
+
+/* ====== EXTRA SMALL DEVICES (Below 480px) ====== */
+@media (max-width: 480px) {
+
+    .page-wrapper h2 {
+        font-size: 18px !important;
+    }
+
+    .product-table th,
+    .product-table td {
+        font-size: 12px !important;
+        padding: 6px !important;
+    }
+
+    .product-table img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .action-view,
+    .action-update,
+    .action-delete {
+        font-size: 11px !important;
+        padding: 4px 6px !important;
+    }
+}
+/* Reduce overall login card width */
+.row.shadow-lg.w-100 {
+    max-width: 650px !important; /* smaller card */
+}
+
+/* Reduce right side form padding */
+.col-12.col-md-6.p-5 {
+    padding: 30px !important; /* reduce from 48px */
+}
+
+/* Reduce left image height */
+.login-image {
+    height: 550px !important;
+    object-fit: cover;
+}

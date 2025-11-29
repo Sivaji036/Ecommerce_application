@@ -4,50 +4,99 @@
 
 {% block content %}
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="container d-flex justify-content-center align-items-center" 
+     style="min-height: 100vh; background:#ffffff; font-family: 'Poppins', sans-serif;">
 
-    <div class="card shadow-lg p-5" style="width: 100%; max-width: 450px; border-radius: 12px;">
-        
-        <h2 class="text-center mb-4" style="font-weight: 700; color: black;">
-            User Login
-        </h2>
+    <div class="card p-5"
+         style="width: 100%; max-width: 420px; border-radius: 20px; background:#ffffff;
+                border:1px solid #e6e6e6; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+        <!-- Top Profile icon -->
+        <div class="text-center mb-3">
+            <div style="width:90px; height:90px; border-radius:50%; background:#f3f3f3; margin:auto;
+                        display:flex; justify-content:center; align-items:center;">
+                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
+                     style="width:50px; opacity:0.8;">
+            </div>
+        </div>
+
+        <h3 class="text-center mb-4" 
+            style="font-weight: 700; color:#333; letter-spacing:1px;">
+            LOGIN
+        </h3>
 
         <form action="/user-login" method="POST">
 
-            <div class="mb-3">
-                <label class="form-label" style="font-weight: bold; color: #333;">Email</label>
-                <input type="email" name="email" 
+            <!-- Email -->
+            <div class="mb-4" style="position:relative;">
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
+                     style="width:18px; position:absolute; top:12px; left:10px; opacity:0.7;"> -->
+                
+                <input type="email" name="email"
+                       placeholder="Email"
                        class="form-control p-3"
-                       placeholder="Enter your email"
-                       style="border-radius: 10px; border: 1px solid #ccc; font-size: 14px;"
+                       style="
+                           padding-left:40px;
+                           border-radius:8px;
+                           border:1px solid #dcdcdc;
+                           background:white;
+                           color:#333;
+                           font-size:15px;
+                       "
                        required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label" style="font-weight: bold; color: #333;">Password</label>
-                <input type="password" name="pwd" 
+            <!-- Password -->
+            <div class="mb-4" style="position:relative;">
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png"
+                     style="width:18px; position:absolute; top:12px; left:10px; opacity:0.7;"> -->
+                
+                <input type="password" name="pwd"
+                       placeholder="Password"
                        class="form-control p-3"
-                       placeholder="Enter your password"
-                       style="border-radius: 10px; border: 1px solid #ccc; font-size: 14px;"
+                       style="
+                           padding-left:40px;
+                           border-radius:8px;
+                           border:1px solid #dcdcdc;
+                           background:white;
+                           color:#333;
+                           font-size:15px;
+                       "
                        required>
             </div>
 
+            <!-- Remember Me -->
+            <!-- <div class="d-flex align-items-center mb-3" style="color:#555; font-size:14px;">
+                <input type="checkbox" style="margin-right:6px;">
+                Remember me
+            </div> -->
+
+            <!-- Login Button -->
             <button type="submit"
-                    class="btn w-100 p-3"
-                    style="border-radius: 8px; font-size: 16px; background-color:blue; border: none; color: white;">
-                Login
+                class="btn w-100 p-3"
+                style="
+                    border:none;
+                    border-radius:25px;
+                    font-size:16px;
+                    font-weight:700;
+                    color:white;
+                    background:#4a89dc;
+                    letter-spacing:1px;
+                    box-shadow:0 5px 12px rgba(0,0,0,0.15);
+                ">
+                LOGIN
             </button>
 
         </form>
-
-        <p class="text-center mt-3" style="font-size: 14px;">
-            <a href="/user-register" style="text-decoration: none; color: #4caf50; font-weight: 600;">
-                Don't have an account? Register
-            </a> <br><br>
-           <a href="{{ url_for('user_forgot') }}" style="text-decoration: none;"> <b>Forgot Password?</b></a>
-        </p>
-    
-                
+<div class="text-center mt-4"> <a href="{{ url_for('user_forgot') }}" style="font-size:14px; text-decoration:none; color:black; font-weight:500;"> Forgot Password? </a> 
+    <br>    
+    <p style="font-size:15px; font-weight:500; margin-top:10px;">
+    Didn’t have an account? 
+    <a href="/user-register" style="text-decoration:none; color:blue; font-weight:600;">
+        Create Account
+    </a>
+</p>
+</div>
     </div>
 
 </div>
