@@ -3,7 +3,8 @@
 {% block title %}User_Home{% endblock %}
 
 {% block content %}
-<div style="padding-left: 100px; padding-right: 100px;">
+<div class="page-padding" style="padding-left: 100px; padding-right: 100px;">
+
 
     <h2>Welcome, {{ user_name }}!</h2>
     <hr>
@@ -28,8 +29,10 @@
         </form> -->
 
         <!-- Product Cards -->
-       <div class="product-container d-flex flex-wrap gap-3"
-     style="padding-left:0 !important; margin-left:0 !important; margin-top:20px;">
+<div class="product-container d-flex flex-wrap gap-3 justify-content-start"
+
+     style="margin-top:20px; width:100%;">
+
 
             {% for product in products %}
             <div class="product-card">

@@ -17,7 +17,7 @@ from utils.pdf_generator import generate_pdf
 
 app=Flask(__name__)
 app.secret_key=config.SECRET_KEY
-app.permanent_session_lifetime=timedelta(minutes=30)
+app.permanent_session_lifetime=timedelta(days=365)
 razorpay_client = razorpay.Client(
     auth=(config.RAZORPAY_KEY_ID, config.RAZORPAY_KEY_SECRET)
 )
@@ -48,7 +48,7 @@ def Home():
     if 'user_id' in session:
         return redirect('/user-dashboard')
 
-    return render_template('/select-login')
+    return redirect('/select-login')
 
 @app.route('/select-login')
 def select_login():
@@ -153,8 +153,9 @@ def admin_dashboard():
 
     cursor.execute('select count(*) as total from products')
     total_products = cursor.fetchone()['total']
-
-    return render_template("admin/dashboard.html", admin_name=session['admin_name'],total_products=total_products)
+    cursor.execute('select * from products')
+    products=cursor.fetchall()
+    return render_template("admin/dashboard.html", admin_name=session['admin_name'],total_products=total_products,products=products)
 @app.route('/admin/products')
 def admin_products():
     conn=get_db_connection()
@@ -664,10 +665,10 @@ def  user_reset_password(token):
     return render_template('/user/reset_password.html')
 @app.route('/user-logout')
 def user_logout():
-    session.pop(session['user_id'],None)
-    session.pop(session['user_name'],None)
-    session.pop(session['user_email'],None)
-    flash('logout sucessfully','success')
+    session.pop('user_id', None)
+    session.pop('user_name', None)
+    session.pop('user_email', None)
+    flash('Logout successfully', 'success')
     return redirect('/select-login')
 @app.route('/user/products')
 def user_products():

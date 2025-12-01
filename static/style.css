@@ -504,3 +504,71 @@ form button:focus {
     height: 550px !important;
     object-fit: cover;
 }
+
+
+
+
+/* Card styling */
+.card {
+    border: none !important;
+    border-radius: 20px !important;
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2) !important;
+}
+
+/* Title style */
+h2 {
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Form inputs styling */
+.form-control {
+    border-radius: 12px !important;
+    border: 1px solid #ccc !important;
+    background: #fafafa;
+    transition: 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #0ed2f7 !important;
+    box-shadow: 0 0 0 3px rgba(14,210,247,0.2) !important;
+    background: #fff;
+}
+
+/* Labels */
+.form-label {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Submit button */
+.btn {
+    background: linear-gradient(135deg, #007bff, #00c6ff) !important;
+    font-weight: 600;
+    border-radius: 12px !important;
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Back link */
+a[href="/admin-dashboard"] {
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+a[href="/admin-dashboard"]:hover {
+    color: #004d00 !important;
+}
+
+

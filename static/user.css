@@ -861,3 +861,9 @@ form button:focus {
     background-color: #0056b3; /* Darker blue on hover */
     color: #fff;
 }
+@media (max-width: 576px) {
+    .page-padding {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
